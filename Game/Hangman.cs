@@ -4,7 +4,7 @@ namespace HangmanGame.Game
     public class Hangman
     {
         int wrongGuesses = 0;
-        int correctPositions = 0;
+        int correctPositionsOfLetters = 0;
         int indexForCorrectGuesses = 0;
         char[] correctGuesses = new char[26];
         char[] secretWord;
@@ -32,7 +32,7 @@ namespace HangmanGame.Game
 
                 Console.Clear();
 
-                // Se o palpite atual for o mesmo palpite correto fornecido anteriormente, contiua para a proxima interação
+                // Se o palpite estiver nos palpites corretos, contiua para a proxima interação
                 if (correctGuesses.Contains(guess)) continue;  
 
                 tryGuess(guess);
@@ -76,7 +76,7 @@ namespace HangmanGame.Game
 
         void tryGuess(char guess)
         {
-            //se a palavra secreta não contém a letra chutada é incrementado os chutes errados
+            //se a palavra secreta não contém o palpite, a variavel wrongGuesses é incrementada
             if (!secretWord.Contains(guess))
             {
                 wrongGuesses++;
@@ -94,7 +94,7 @@ namespace HangmanGame.Game
                 if (secretWord[i] == guess)
                 {
                     secretWordWithMask[i] = guess;
-                    correctPositions++;
+                    correctPositionsOfLetters++;
 
                 }
             }
@@ -102,7 +102,7 @@ namespace HangmanGame.Game
         }
         bool win()
         {
-            return correctPositions >= secretWord.Length;
+            return correctPositionsOfLetters >= secretWord.Length;
         }
         bool lose()
         {

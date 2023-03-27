@@ -12,7 +12,7 @@ public class Program
                             "laranja", "limao", "lima",
                             "melancia", "mamao", "melao"
                           };
-        string[] animal = { "abelha", "aguia", "aranha","arara",
+        string[] animals = { "abelha", "aguia", "aranha","arara",
                             "avestruz","barata","baleia","bode",
                             "burro","camelo","cachorro","cavalo",
                             "coelho","elefante","escorpiao","foca",
@@ -22,7 +22,7 @@ public class Program
                             "porco","polvo","rato","raposa","tartaruga",
                             "tatu","tigre","touro","urubu" };
         
-        string[][] wordType= { fruits, animal };
+        string[][] wordType= { fruits, animals };
 
         var random = new Random();
         int wordTypeIndex = random.Next(wordType.Length);
@@ -43,9 +43,6 @@ public class Program
                 break;
             default: break;
         }
-        
-        //randomWord = fruits[random.Next(fruits.Length)];
-        //Console.WriteLine($"A palavra secreta é uma fruta com {randomWord.Length} letras!");
 
         var hangman = new Hangman(randomWord);
         hangman.Start();
